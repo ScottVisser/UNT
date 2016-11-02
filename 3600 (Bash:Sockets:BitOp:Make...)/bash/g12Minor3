@@ -1,0 +1,10 @@
+#Minor Assignment 3 (#2)
+#Print number of files in current directory
+#Group 12
+#Scott Visser
+#Matthew Maddox
+#Tim De Reuse
+#Daniel Ehlmann
+
+ls -1 | wc -l
+

@@ -1,0 +1,20 @@
+Scott Visser
+CSCE 3530
+PA 1
+
+This file included as example of compiling instructions
+(assumer server is on cse01 and client on cse02)
+
+serverside:
+gcc server.c -o server1
+./server1 1234
+
+clientside:
+gcc client.c -o client1
+./client1 cse01 1234
+
+Client Will be notified if connection is made and will request a url
+Client sends url to server.
+server replys with html code
+client saves code to file
+

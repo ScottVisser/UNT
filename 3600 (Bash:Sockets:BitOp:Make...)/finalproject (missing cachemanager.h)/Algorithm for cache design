@@ -1,0 +1,40 @@
+
+
+int Cache:: read( Index, Tag){
+        Reads counter++
+        For(J=0; J < assoc; J++) //Scan all the blocks in that row specified by index.
+        IF(tags_matrix[index][j] == Tag)        //THen its a hit
+        {
+                read_hits_counter++;  //Count the number of reads
+                update(LRU_counter or LFU_counters, index, Tag); //Update the LRU or LFU depending on what algorithm we are using
+                return 1; //Return back to the the function
+
+
+        }else //it is a miss
+        {
+                read_misses_counter ++;
+                // Ok, we need to choose a block in the specific set that (index) are referring to
+                //either to destroy it or to evict it
+                For( J=0; J < assoc; J++){
+                        if(Block[index][J] not used yet){
+                                Block[index][J] is our guy;  //Assign the block position with the tag, empty space
+                                tags_matrix[index][J] = Tag;  //Assign the block position with the tag
+                                update(LRU_counter or LFU_counters, index, J); //Update the LRU and LFU counters with index and position
+                                return 0; //in the main code, you need to issue a read for the same(Index, Tag)
+                        }
+                }
+                if(all block are occupied){
+                        evicted_block = choose_block_to_evict(); //will return the column the block are in
+                        if(writing_policy == WP){
+                                if(dirty_flags[Index][evicted_block] == 1){
+                                        address_evicted = calculate address of this block;
+                                        WP_counter++;
+                                }
+                        }
+                        tags_matrix[Index][evicted_block] = Tag;
+                        update(LRU_counter or LRU_counters, index, J);
+                        return 0;
+                }
+        }
+}
+~                                           

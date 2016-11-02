@@ -1,0 +1,8 @@
+i=0
+while [ $i -lt 1 ]; do
+	sleep 5
+	echo "today is $(date)"
+	let i+=1
+done
+
+

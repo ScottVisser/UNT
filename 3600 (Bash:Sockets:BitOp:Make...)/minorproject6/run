@@ -1,0 +1,8 @@
+echo "Server"
+g++ server.c -o server
+echo "Client"
+g++ client.c -o client
+echo "starting server in background..."
+./server 2121 & ./client cse01 2121
+
+
